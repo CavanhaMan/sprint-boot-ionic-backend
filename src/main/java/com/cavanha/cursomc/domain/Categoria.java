@@ -20,6 +20,9 @@ public class Categoria implements Serializable {
 	private Integer id;
 	private String nome;
 	
+	/* Esta notação aqui é pra criar a relação "muitos pra muitos"
+	 * entre a tabela Produto e Categoria
+	 * aqui eu só preciso referenciar o que já criei em produtos	 */
 	@ManyToMany(mappedBy="categorias")
 	
 	private List<Produto> produtos = new ArrayList<>();
