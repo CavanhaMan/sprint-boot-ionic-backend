@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -20,10 +22,11 @@ public class Categoria implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	/* Esta notação aqui é pra criar a relação "muitos pra muitos"
+	@JsonManagedReference /*Resolve a pesquisa cíclica entre produtos e categorias*/
+	@ManyToMany(mappedBy="categorias")
+	/* Esta notação aqui acima é pra criar a relação "muitos pra muitos"
 	 * entre a tabela Produto e Categoria
 	 * aqui eu só preciso referenciar o que já criei em produtos	 */
-	@ManyToMany(mappedBy="categorias")
 	
 	private List<Produto> produtos = new ArrayList<>();
 	
