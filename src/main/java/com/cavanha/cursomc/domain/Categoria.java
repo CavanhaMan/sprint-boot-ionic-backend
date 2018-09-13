@@ -24,7 +24,6 @@ public class Categoria implements Serializable {
 	/* Esta notação aqui acima é pra criar a relação "muitos pra muitos"
 	 * entre a tabela Produto e Categoria
 	 * aqui eu só preciso referenciar o que já criei em produtos	 */
-	
 	private List<Produto> produtos = new ArrayList<>();
 	
 	public Categoria() {}
