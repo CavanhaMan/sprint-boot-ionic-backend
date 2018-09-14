@@ -3,14 +3,12 @@ package com.cavanha.cursomc.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.cavanha.cursomc.domain.Categoria;
 import com.cavanha.cursomc.repositories.CategoriaRepository;
-import com.cavanha.cursomc.services.exceptions.ConstraintException;
 import com.cavanha.cursomc.services.exceptions.DataIntegrityException;
 import com.cavanha.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -40,9 +38,6 @@ public class CategoriaService {
 		find(id);
 		try {
 			repo.deleteById(id);
-		}
-		catch (ConstraintViolationException e) {
-			throw new ConstraintException("Não é possível excluir uma categoria que possui produtos");
 		}
 		catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos");
