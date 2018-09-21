@@ -1,0 +1,14 @@
+{
+	"nome" : "João da Silva",
+	"email" : "joao@gmail.com",
+	"cpfOuCnpj" : "03469218641",
+	"tipo" : 1,
+	"telefone1" : "996611122",
+	"telefone2" : "32364455",
+	"logradouro" : "Rua das Acácias",
+	"numero" : "345",
+	"complemento" : "Apto 302",
+	"cep" : "38466837",
+	"cidadeId" : 2
+}
+
