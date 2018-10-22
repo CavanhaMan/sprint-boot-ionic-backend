@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import com.cavanha.cursomc.domain.enums.TipoCliente;
 import com.cavanha.cursomc.dto.ClienteNewDTO;
 import com.cavanha.cursomc.resources.exceptions.FieldMessage;
+import com.cavanha.cursomc.services.validation.utils.BR;
 
 public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert, ClienteNewDTO> {
 	@Override
@@ -18,7 +21,11 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
 
 		List<FieldMessage> list = new ArrayList<>();
 		
-		// inclua os testes aqui, inserindo erros na lista
+		if(objDto.getTipo().equals(TipoCliente.PESSOAFISICA.getCod()) && !BR.isValidCPF(objDto.getCpfOuCnpj())) 
+			list.add(new FieldMessage("cpfOuCnpj","CPF inválido"));
+		
+		if(objDto.getTipo().equals(TipoCliente.PESSOAJURIDICA.getCod()) && !BR.isValidCNPJ(objDto.getCpfOuCnpj())) 
+			list.add(new FieldMessage("cpfOuCnpj","CNPJ inválido"));
 		
 		
 		for (FieldMessage e : list) {
