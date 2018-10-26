@@ -1,3 +1,4 @@
+/*Rodrigo CavanhaMan*/
 package com.cavanha.cursomc.domain;
 
 import java.io.Serializable;
